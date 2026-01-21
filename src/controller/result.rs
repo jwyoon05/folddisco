@@ -333,7 +333,7 @@ pub const MATCH_RESULT_DEFAULT_COLUMNS: &[&str] = &[
     "node_count",
     "idf",
     "rmsd",
-    // "e_value",
+    "e_value",
     "matching_residues",
     "query_residues",
 ];
@@ -363,11 +363,10 @@ pub fn evalue_fitting(x: f32, m: f32, l: f32) -> f64 {
     let m_d = m as f64;
     let l_d = l as f64;
 
-    let mu = 0.01115566 * l_d.powi(2) + 0.06267775 * l_d + 18.8132141;
-    // let lam = 0.50 * (-0.043 * l_d).exp();
-    let lam = 5.73798993 / (l_d + 6.51703860);
+    let mu = 4.2161 * (l_d * 0.0489).exp() + 3.6661;
+    let lam = 0.4805 * (l_d ** -0.5216);
     
-    let ref_db_size = 10547.0; 
+    let ref_db_size = 10546.0; 
     let search_space_ref = ref_db_size;    // let search_space_ref = ref_db_size;
     
     let k_val = (lam * mu).exp() / search_space_ref;
