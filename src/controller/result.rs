@@ -371,7 +371,7 @@ pub fn evalue_fitting(x: f32, m: f32, l: f32) -> f64 {
     
     let k_val = (lam * mu).exp() / search_space_ref;
     let real_search_space = m_d;
-    let e_val_raw = k_val * real_search_space * (-lam * x_d).exp();
+    let e_val_raw = k_val * real_search_space * l_d * (-lam * x_d).exp();
 
     let e_val = (e_val_raw * real_search_space) / (e_val_raw + real_search_space);
 
