@@ -364,7 +364,7 @@ pub fn evalue_fitting(x: f32, m: f32, l: f32) -> f64 {
     let l_d = l as f64;
 
     let mu = 4.2161 * (l_d * 0.0489).exp() + 3.6661;
-    let lam = 0.4805 * (l_d ** -0.5216);
+    let lam = 0.2894 * (l_d * -0.0762).exp() + 0.0316;
     
     let ref_db_size = 10546.0; 
     let search_space_ref = ref_db_size;    // let search_space_ref = ref_db_size;
@@ -375,7 +375,7 @@ pub fn evalue_fitting(x: f32, m: f32, l: f32) -> f64 {
 
     let e_val = (e_val_raw * real_search_space) / (e_val_raw + real_search_space);
 
-    e_val
+    e_val as f32
 }
 
 /// Create a TsvFormatter for MatchResult with specified column keys
